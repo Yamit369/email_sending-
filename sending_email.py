@@ -10,11 +10,29 @@ sender_email =  "yaveloper@gmail.com"
 receiver_email =  "dreiko200590@hotmail.com"
 password = input("Please enter the password: ")
 
+
 message = EmailMessage()
 message["From"] = sender_email
 message["To"] = receiver_email
 message["Subject"] = subject
 message.set_content(body)
+
+html  = f""" 
+<html>
+    <body style="background-color: magenta">
+        <h1 style="background-color: lightblue"> {subject} </h1>
+        <p > <strong> {body} </strong> </p>    
+    
+    
+    </body>
+
+
+</html>
+
+
+"""
+
+message.add_alternative(html, subtype="html")
 
 context = ssl.create_default_context()
 
